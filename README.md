@@ -6,6 +6,8 @@
 
 • Descrição
 <br>
+• Links
+<br>
 • Banco de dados
 <br>
 • Requisições
@@ -19,6 +21,14 @@
 O projeto Labeddit é parte da última etapa do curso de Desenvolvimento Web Full Stack da escola de programação "Labenu". Trata-se de um pequeno clone da rede social "Reddit" que leva o desenvolvedor a colocar em prática seus conhecimentos em ambas as stacks. Os usuários da Labeddit podem criar suas contas e interagir entre si no fórum único da aplicação através de tópicos e comentários dentro dos mesmos. Caso desejem, os usuários podem alterar seus dados ou deletar a conta (o que, claro, não queremos que vocês façam 😭). 
 
 Neste repositório, você verá a construção da API relativa ao projeto Labeddit.
+
+## Links
+
+Deploy da API no Render:
+<a href="https://labeddit-api-0ek7.onrender.com">![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)</a>
+
+Coleção da API no Postman:
+<a href="[https://labeddit-api-0ek7.onrender.com](https://documenter.getpostman.com/view/26594506/2s9YJgVMAp)">![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)</a>
 
 ## Banco de dados 
 
@@ -385,6 +395,8 @@ $ npm run dev
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+
 
 ### Front-end
 
