@@ -8,7 +8,6 @@ import { CommentDatabase } from "../database/CommentDatabase"
 import { UnauthorizedError } from "../errors/UnauthorizedError"
 import { Comment, CommentDB, CommentModel } from "../models/Comment"
 import { COMMENT_LIKE, LikeOrDislikeDB } from "../models/LikeComment"
-import { EditCommentInputDTO, EditCommentOutputDTO } from "../dtos/Comments/editComment.dto"
 import { GetCommentsInputDTO, GetCommentsOutputDTO } from "../dtos/Comments/getComments.dto"
 import { CreateCommentInputDTO, CreateCommentOutputDTO } from "../dtos/Comments/createComment.dto"
 import { DeleteCommentInputDTO, DeleteCommentOutputDTO } from "../dtos/Comments/deleteComment.dto"
@@ -139,74 +138,6 @@ export class CommentBusiness {
     }
 
     return output
-  }
-
-  public editComment = async (
-    input: EditCommentInputDTO
-  ): Promise<EditCommentOutputDTO> => {
-
-    const {
-      idToEdit,
-      content,
-      token
-    } = input
-
-    const payload = this.tokenManager.getPayload(token)
-
-    if (payload === null) {
-      throw new UnauthorizedError("Token inválido")
-    }
-
-    if (!idToEdit) {
-      throw new NotFoundError("Por favor, insira um id")
-    }
-
-    const CommentToEditDB = await this.CommentDatabase.findCommentById(idToEdit)
-
-    if (!CommentToEditDB) {
-      throw new NotFoundError("Comentário com suposto id não encontrado, insira um id válido")
-    }
-
-    const comment = new Comment(
-      CommentToEditDB.id,
-      CommentToEditDB.post_id,
-      CommentToEditDB.content,
-      CommentToEditDB.likes,
-      CommentToEditDB.dislikes,
-      CommentToEditDB.created_at,
-      new Date().toISOString(),
-      CommentToEditDB.creator_id,
-      CommentToEditDB.creator_username
-    )
-
-
-    content && comment.setContent(content)
-
-    const updateCommentDB: CommentDB = {
-      id: comment.getId(),
-      post_id: comment.getPostId(),
-      creator_id: comment.getCreatorId(),
-      content: comment.getContent(),
-      likes: comment.getLikes(),
-      dislikes: comment.getDislikes(),
-      created_at: comment.getCreatedAt(),
-      updated_at: comment.getUpdatedAt()
-    }
-
-    if (payload.role === USER_ROLES.ADMIN) {
-      await this.CommentDatabase.updateCommentById(idToEdit, updateCommentDB)
-    } else if (CommentToEditDB.creator_id === payload.id) {
-      await this.CommentDatabase.updateCommentById(idToEdit, updateCommentDB)
-    } else {
-      throw new UnauthorizedError("Somente o administrador ou dono da postagem podem acessar este recurso.")
-    }
-
-    const output = {
-      content: comment.getContent()
-    }
-
-    return output
-
   }
 
   public deleteComment = async (
