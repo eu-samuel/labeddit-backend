@@ -1,1 +1,1 @@
-# labeddit-backend
+# labbedit-backend
