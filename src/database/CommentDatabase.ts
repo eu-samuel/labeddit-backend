@@ -145,15 +145,16 @@ export class CommentDatabase extends BaseDatabase {
     return result as CommentDBWithCreator | undefined
   }
 
-   public updateCommentById = async (
-    id: string
+ public updateCommentById = async (
+    id: string, TopicDB: CommentDB
   ): Promise<void> => {
 
     await BaseDatabase
       .connection(CommentDatabase.TABLE_COMMENTS)
-      .update()
+      .update(TopicDB)
       .where({ id: id })
   }
+
   
   public deleteCommentById = async (
     idToDelete: string
