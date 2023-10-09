@@ -17,12 +17,12 @@
     "typescript": "^5.2.2",
     "zod": "^3.22.4"
   },
-  "scripts": {
-    "start": "tsc && node build/index.js",
-    "dev": "ts-node-dev src/index.ts",
+ "scripts": {
+		"start": "node ./build/index.js",
+		"build": "tsc",
     "test": "jest",
-    "build": "tsc"
-  },
+		"dev": "ts-node-dev ./src/index.ts"
+ },
   "dependencies": {
     "cors": "^2.8.5",
     "sqlite3": "^5.1.6",
