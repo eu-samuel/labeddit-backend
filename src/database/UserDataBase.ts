@@ -70,15 +70,6 @@ export class UserDatabase extends BaseDatabase {
       .where({ id })
   }
 
-  public updateUserRoleById = async (
-    id: string, userDB: UserDB
-  ): Promise<void> => {
-    await BaseDatabase
-      .connection(UserDatabase.TABLE_USERS)
-      .update(userDB)
-      .where({ id })
-  }
-
   public deleteUserById = async (
     id: string
   ): Promise<void> => {
